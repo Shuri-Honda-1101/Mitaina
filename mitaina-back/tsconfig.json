@@ -103,7 +103,7 @@
 		// モジュール解決の方法を指定する
 		"moduleResolution": "node",
 		// import * as を認識させるため false にする
-		"esModuleInterop": false,
+		"esModuleInterop": true,
 		"allowSyntheticDefaultImports": true
 	}
 }
