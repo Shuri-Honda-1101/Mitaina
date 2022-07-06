@@ -13,8 +13,31 @@ datasource db {
 }
 
 model User {
-  id      Int      @id @default(autoincrement())
-  email   String   @unique
-  name    String?
+  id      String      @id @default(cuid())
+  loginId   String   @unique
+  name    String
+  passwordHash String
+  rooms Room[]
 }
  
+model Room {
+  id      String      @id @default(cuid())
+  ownerId String
+  users User[]
+  turns Turn[] 
+}
+
+model Turn {
+  id      String      @id @default(cuid())
+  roomId String 
+  room Room @relation(fields: [roomId], references: [id])
+  frontCardId String
+  backCardId String
+  cards Card[]
+}
+
+model Card {
+  id      String      @id @default(cuid())
+  text String @unique
+  turn Turn[]
+}
