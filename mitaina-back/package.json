@@ -4,7 +4,7 @@
 	"description": "",
 	"main": "index.js",
 	"scripts": {
-		"start": "nodemon index.ts",
+		"start": "nodemon src/routes/index.ts",
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"build": "tsc"
 	},
@@ -12,6 +12,7 @@
 	"author": "",
 	"license": "ISC",
 	"devDependencies": {
+		"@types/bcrypt": "^5.0.0",
 		"@types/express": "^4.17.13",
 		"@types/node": "^18.0.0",
 		"nodemon": "^2.0.18",
@@ -21,6 +22,7 @@
 	},
 	"dependencies": {
 		"@prisma/client": "^4.0.0",
+		"bcrypt": "^5.0.1",
 		"express": "^4.18.1"
 	}
 }

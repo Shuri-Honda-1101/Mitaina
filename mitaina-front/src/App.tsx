@@ -1,36 +1,42 @@
-import "./App.css";
-import { useState, useEffect, Dispatch, SetStateAction } from "react";
+import './App.css';
+import { useState, useEffect } from 'react';
+import { getJSON } from './lib/EndpointHelper';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
-interface Users {
-  id?: number;
-  email?: string;
-  name?: string;
-}
+//components
+import Top from './pages/Top';
+import Login from './pages/Auth/Login';
+import Register from './pages/Auth/Register';
+
+//Types
+import { User } from '@prisma/client';
 
 function App() {
-  const [message, setMessage] = useState("");
-  const [users, setUsers]: [Users[], Dispatch<SetStateAction<[]>>] = useState(
-    []
-  );
-  useEffect(() => {
-    fetch("/api")
-      .then((res) => res.json())
-      .then((data) => setMessage(data.message));
-  }, []);
-  useEffect(() => {
-    fetch("/users")
-      .then((res) => res.json())
-      .then((data) => setUsers(data));
-  }, []);
-  console.log(users);
-  console.log(message);
+	const [users, setUsers] = useState<User[]>([]);
+	useEffect(() => {
+		const getUsers = async () => {
+			const users: User[] | undefined = await getJSON('/users/get');
+			console.log(users);
+			users && setUsers(users);
+		};
+		getUsers();
+	}, []);
+	console.log(users);
 
-  return (
-    <div className="App">
-      <p>{message}</p>
-      {users.length && <p>{users[0].name}</p>}
-    </div>
-  );
+	return (
+		<BrowserRouter>
+			<Routes>
+				{/* <Route
+      exact
+      path="/"
+      element={<LoggedInRoute component={<Room />} />}
+    /> */}
+				<Route path="/login" element={<Login />} />
+				<Route path="/register" element={<Register />} />
+				<Route path="/" element={<Top />} />
+			</Routes>
+		</BrowserRouter>
+	);
 }
 
 export default App;
