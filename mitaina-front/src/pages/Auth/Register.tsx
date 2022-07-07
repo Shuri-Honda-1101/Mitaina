@@ -1,10 +1,12 @@
 import React, { FC, useState } from 'react';
 import { postJSON } from '../../lib/EndpointHelper';
-import { XCircleIcon, CheckCircleIcon } from '@heroicons/react/outline';
+import { XCircleIcon, CheckCircleIcon, ArrowLeftIcon } from '@heroicons/react/outline';
+import { useNavigate } from 'react-router-dom';
 
 type Props = {};
 
 const Register: FC<Props> = () => {
+	const navigate = useNavigate();
 	const [loginId, setLoginId] = useState<string>('');
 	const [userName, setUserName] = useState<string>('');
 	const [password, setPassword] = useState<string>('');
@@ -12,6 +14,7 @@ const Register: FC<Props> = () => {
 		type: 'success' | 'error';
 		message: string;
 	} | null>(null);
+	const [result, setResult] = useState<boolean>(false);
 
 	const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
@@ -38,7 +41,11 @@ const Register: FC<Props> = () => {
 			setMessage({ type: 'error', message: 'アカウント作成に失敗しました' });
 		}
 		if (createRes.ok) {
-			setMessage({ type: 'success', message: 'アカウントを作成しました' });
+			setMessage({
+				type: 'success',
+				message: 'アカウントを作成しました。下記のリンクからログインしてください。'
+			});
+			setResult(true);
 		}
 	};
 	return (
@@ -46,7 +53,7 @@ const Register: FC<Props> = () => {
 			<div className="relative hero pb-32 min-h-screen bg-base-200">
 				<div className="hero-content flex-col gap-8">
 					<div className="text-center">
-						<p>SignUp</p>
+						<h1 className="text-5xl font-bold">ミタイナ</h1>
 					</div>
 					{message && (
 						<div className={`alert alert-${message.type} shadow-lg`}>
@@ -103,8 +110,19 @@ const Register: FC<Props> = () => {
 										onChange={(e) => setPassword(e.target.value)}
 									/>
 								</div>
+								{result && (
+									<div className="label mt-2">
+										<p
+											onClick={() => navigate('../login')}
+											className="label-text-alt link link-hover text-primary flex justify-start items-center"
+										>
+											<ArrowLeftIcon className="w-3 mr-1" />
+											ログイン
+										</p>
+									</div>
+								)}
 								<div className="form-control mt-6">
-									<button type="submit" className="btn btn-primary">
+									<button type="submit" className="btn btn-primary" disabled={result}>
 										登録
 									</button>
 								</div>
