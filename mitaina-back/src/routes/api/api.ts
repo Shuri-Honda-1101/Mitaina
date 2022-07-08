@@ -2,6 +2,7 @@ import { Router } from 'express';
 import registerRouter from './register';
 import signinRouter from './signin';
 import authRouter from './auth';
+import signoutRouter from './signout';
 
 // Export the base-router
 const baseRouter = Router();
@@ -9,6 +10,7 @@ const baseRouter = Router();
 // Setup routers
 baseRouter.use('/register', registerRouter);
 baseRouter.use('/signin', signinRouter);
+baseRouter.use('/signout', signoutRouter);
 baseRouter.use('/auth', authRouter);
 // Export default.
 export default baseRouter;
