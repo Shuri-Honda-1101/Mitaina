@@ -105,5 +105,6 @@
 		// import * as を認識させるため false にする
 		"esModuleInterop": true,
 		"allowSyntheticDefaultImports": true
-	}
+	},
+	"include": ["src/**/*"]
 }
