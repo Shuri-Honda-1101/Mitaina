@@ -1,6 +1,4 @@
 import './App.css';
-import { useState, useEffect } from 'react';
-import { getJSON } from './lib/EndpointHelper';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 //components
@@ -8,16 +6,19 @@ import Top from './pages/Top';
 import Login from './pages/Auth/Login';
 import Register from './pages/Auth/Register';
 import { LoggedInRoute } from './components/LoggedInRoute';
+import { Suspense } from 'react';
 
 function App() {
 	return (
-		<BrowserRouter>
-			<Routes>
-				<Route path="/" element={<LoggedInRoute component={<Top />} />} />
-				<Route path="/login" element={<Login />} />
-				<Route path="/register" element={<Register />} />
-			</Routes>
-		</BrowserRouter>
+		<Suspense fallback={<div>loading</div>}>
+			<BrowserRouter>
+				<Routes>
+					<Route path="/" element={<LoggedInRoute component={<Top />} />} />
+					<Route path="/login" element={<Login />} />
+					<Route path="/register" element={<Register />} />
+				</Routes>
+			</BrowserRouter>
+		</Suspense>
 	);
 }
 

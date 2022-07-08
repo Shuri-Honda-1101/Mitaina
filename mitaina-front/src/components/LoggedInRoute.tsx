@@ -1,9 +1,13 @@
+import { useEffect } from 'react';
 import { Navigate } from 'react-router-dom';
-import { useRecoilValue } from 'recoil';
-import { userAtom } from '../store/user';
+import { useRecoilState } from 'recoil';
+import { userSelector } from '../store/user';
 
 export const LoggedInRoute = ({ component }: any) => {
-	const user = useRecoilValue(userAtom);
+	const [currentUser, store] = useRecoilState(userSelector);
+	useEffect(() => {
+		store(currentUser);
+	}, []);
 
-	return <>{user ? component : <Navigate to="/login" />}</>;
+	return <>{currentUser ? component : <Navigate to="/login" />}</>;
 };
