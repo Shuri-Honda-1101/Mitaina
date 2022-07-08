@@ -1,6 +1,6 @@
 import React, { FC, useState } from 'react';
 import { postJSON } from '../../lib/EndpointHelper';
-import { XCircleIcon, CheckCircleIcon } from '@heroicons/react/outline';
+import { XCircleIcon, CheckCircleIcon, ArrowLeftIcon } from '@heroicons/react/outline';
 import { useNavigate } from 'react-router-dom';
 
 type Props = {};
@@ -91,6 +91,15 @@ const Login: FC<Props> = () => {
 									<button type="submit" className="btn btn-primary">
 										ログイン
 									</button>
+								</div>
+								<div className="label mt-2">
+									<p
+										onClick={() => navigate('../register')}
+										className="label-text-alt link link-hover text-primary flex justify-start items-center"
+									>
+										<ArrowLeftIcon className="w-3 mr-1" />
+										ユーザー登録
+									</p>
 								</div>
 							</form>
 						</div>
