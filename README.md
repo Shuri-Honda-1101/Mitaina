@@ -1,7 +1,18 @@
 # Mitaina
 ボードゲーム「ミタイナ」をオンラインで遊べるように
 
-https://mitaina.onrender.com
+https://mitaina.onrender.com (※未完成)
+
+## 実装機能
+- サインアップ
+- ログイン
+- ユーザー認証
+
+## 実装予定
+- ルーム作成
+- ゲームの実装
+- 実績表示
+- UIのブラッシュアップ
 
 ## 使用技術
 - react
@@ -11,3 +22,4 @@ https://mitaina.onrender.com
 - PlanetScale
 - recoil
 - tailwindCSS
+- render
