@@ -30,7 +30,7 @@ const Register: FC<Props> = () => {
 			setMessage({ type: 'error', message: 'パスワードは6文字以上です' });
 			return;
 		}
-		const createRes = await postJSON('users', {
+		const createRes = await postJSON('register', {
 			loginId,
 			userName,
 			password
@@ -75,7 +75,7 @@ const Register: FC<Props> = () => {
 										<span className="label-text">ユーザーID</span>
 									</label>
 									<input
-										onClick={(e) => setMessage(null)}
+										onClick={() => setMessage(null)}
 										type="text"
 										pattern="^[0-9A-Za-z]+$"
 										id="register-loginId"
@@ -89,7 +89,7 @@ const Register: FC<Props> = () => {
 										<span className="label-text">ユーザー名</span>
 									</label>
 									<input
-										onClick={(e) => setMessage(null)}
+										onClick={() => setMessage(null)}
 										type="email"
 										id="register-userName"
 										className="input input-bordered"
@@ -102,7 +102,7 @@ const Register: FC<Props> = () => {
 										<span className="label-text">パスワード</span>
 									</label>
 									<input
-										onClick={(e) => setMessage(null)}
+										onClick={() => setMessage(null)}
 										type="password"
 										id="register-password"
 										className="input input-bordered"
