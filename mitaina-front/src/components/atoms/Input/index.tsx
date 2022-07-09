@@ -62,6 +62,9 @@ export const Input: FC<Props> = ({
 		if (onClick && !disabled) {
 			onClick(event);
 		}
+		if (onChange && !disabled) {
+			onChange(event);
+		}
 	};
 
 	return (
@@ -74,6 +77,7 @@ export const Input: FC<Props> = ({
 			pattern={pattern}
 			id={id}
 			value={value}
+			onChange={handleSubmit}
 		/>
 	);
 };
