@@ -2,8 +2,8 @@ import React, { FC, useState } from 'react';
 import { postJSON } from '../../lib/EndpointHelper';
 import { XCircleIcon, CheckCircleIcon, ArrowLeftIcon } from '@heroicons/react/outline';
 import { useNavigate } from 'react-router-dom';
-import Hero from 'components/atoms/Hero';
-import Card from 'components/atoms/Card';
+import Hero from 'components/Hero';
+import Card from 'components/Card';
 import Button from 'components/atoms/Button';
 import Input from 'components/atoms/Input';
 

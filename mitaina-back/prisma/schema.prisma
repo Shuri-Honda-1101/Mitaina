@@ -17,13 +17,22 @@ model User {
   loginId   String   @unique
   name    String
   passwordHash String
-  rooms Room[]
+  gameUser GameUser[]  
+}
+
+model GameUser{
+  id      String      @id @default(cuid())
+  userId String
+  user User @relation(fields: [userId], references: [id])
+  roomId String
+  rooms Room @relation(fields: [roomId], references: [id])
+  score Int
+  isHost Boolean
 }
  
 model Room {
   id      String      @id @default(cuid())
-  ownerId String
-  users User[]
+  users GameUser[]
   turns Turn[] 
 }
 
