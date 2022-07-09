@@ -5,7 +5,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Top from './pages/Top';
 import Login from './pages/Auth/Login';
 import Register from './pages/Auth/Register';
-import { LoggedInRoute } from './components/LoggedInRoute';
+import { LoggedInRoute } from './auth/LoggedInRoute';
 import { Suspense } from 'react';
 
 function App() {
