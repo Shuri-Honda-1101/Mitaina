@@ -1,11 +1,14 @@
 import React, { FC, useState } from 'react';
 import { postJSON } from '../../lib/EndpointHelper';
-import { XCircleIcon, CheckCircleIcon, ArrowLeftIcon } from '@heroicons/react/outline';
+import { ArrowLeftIcon } from '@heroicons/react/outline';
 import { useNavigate } from 'react-router-dom';
+
+//components
 import Hero from 'components/Hero';
 import Card from 'components/Card';
 import Button from 'components/atoms/Button';
 import Input from 'components/atoms/Input';
+import Alert from 'components/atoms/Alert';
 
 type Props = {};
 
@@ -55,18 +58,7 @@ const Register: FC<Props> = () => {
 	return (
 		<>
 			<Hero titleText="ミタイナ風オンライン">
-				{message && (
-					<div className={`alert alert-${message.type} shadow-lg`}>
-						<div className="flex items-center">
-							{message.type === 'success' ? (
-								<CheckCircleIcon className="w-6" />
-							) : (
-								<XCircleIcon className="w-6" />
-							)}
-							<span className="text-sm">{message.message}</span>
-						</div>
-					</div>
-				)}
+				{message && <Alert message={message.message} type={message.type} />}
 				<Card>
 					<form onSubmit={handleSubmit}>
 						<div className="form-control">
