@@ -6,7 +6,7 @@ module.exports = {
 			colors: {
 				primary: '#ea580c',
 				secondary: '#22c55e',
-				accent: '#3b82f6',
+				accent: '#38bdf8',
 				neutral: '#f3f4f6',
 				'base-100': '#fde68a',
 				info: '#3ABFF8',
@@ -23,7 +23,7 @@ module.exports = {
 				mytheme: {
 					primary: '#ea580c',
 					secondary: '#22c55e',
-					accent: '#3b82f6',
+					accent: '#38bdf8',
 					neutral: '#f3f4f6',
 					'base-100': '#fde68a',
 					info: '#3ABFF8',

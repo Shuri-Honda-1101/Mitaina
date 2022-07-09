@@ -52,8 +52,8 @@ export const Button: FC<Props> = ({
 	const className = [
 		'btn',
 		color === 'default' ? '' : `btn-${color}`,
-		outline ? 'btn-outline' : '',
 		block ? 'btn-block' : '',
+		outline ? 'btn-outline' : '',
 		loading ? 'loading' : '',
 		shape === 'default' ? '' : `btn-${shape}`,
 		..._size,

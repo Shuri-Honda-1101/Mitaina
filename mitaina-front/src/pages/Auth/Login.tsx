@@ -4,8 +4,8 @@ import { useNavigate } from 'react-router-dom';
 import Button from 'components/atoms/Button';
 import { postJSON } from 'lib/EndpointHelper';
 import Input from 'components/atoms/Input';
-import Hero from 'components/atoms/Hero';
-import Card from 'components/atoms/Card';
+import Hero from 'components/Hero';
+import Card from 'components/Card';
 
 type Props = {};
 
