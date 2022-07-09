@@ -1,7 +1,6 @@
 import Button from 'components/atoms/Button';
 import Card from 'components/Card';
 import Hero from 'components/Hero';
-import Input from 'components/atoms/Input';
 import React, { FC } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { postJSON } from '../../lib/EndpointHelper';
@@ -50,7 +49,6 @@ const Top: FC<Props> = () => {
 					</div>
 				</Card>
 			</Hero>
-			<button onClick={onClickLogout}>ログアウト</button>
 		</>
 	);
 };

@@ -7,7 +7,7 @@ export const LoggedInRoute = ({ component }: any) => {
 	const [currentUser, store] = useRecoilState(userSelector);
 	useEffect(() => {
 		store(currentUser);
-	}, []);
+	}, [store, currentUser]);
 
 	return <>{currentUser ? component : <Navigate to="/login" />}</>;
 };
