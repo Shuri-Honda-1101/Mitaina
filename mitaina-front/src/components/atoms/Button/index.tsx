@@ -28,11 +28,27 @@ type Props = {
 	onClick?: (event: any) => void;
 };
 
-const SizeSetting: Map[] = [
+const sizeSetting: Map[] = [
 	{ key: 'small', class: ['btn-sm'] },
 	{ key: 'normal', class: [''] },
 	{ key: 'large', class: ['btn-lg'] },
 	{ key: 'tiny', class: ['btn-xs'] }
+];
+const colorSetting: Map[] = [
+	{ key: 'default', class: [''] },
+	{ key: 'primary', class: ['btn-primary'] },
+	{ key: 'secondary', class: ['btn-secondary'] },
+	{ key: 'accent', class: ['btn-accent'] },
+	{ key: 'ghost', class: ['btn-ghost'] },
+	{ key: 'link', class: ['btn-link'] },
+	{ key: 'success', class: ['btn-success'] },
+	{ key: 'warning', class: ['btn-warning'] },
+	{ key: 'error', class: ['btn-error'] }
+];
+const shapeSetting: Map[] = [
+	{ key: 'default', class: [''] },
+	{ key: 'circle', class: ['btn-circle'] },
+	{ key: 'square', class: ['btn-square'] }
 ];
 
 export const Button: FC<Props> = ({
@@ -48,14 +64,16 @@ export const Button: FC<Props> = ({
 	type = 'button',
 	onClick
 }: Props) => {
-	const _size = SizeSetting.filter((map: Map) => map.key === size).map((map: Map) => map.class);
+	const _size = sizeSetting.filter((map: Map) => map.key === size).map((map: Map) => map.class);
+	const _color = colorSetting.filter((map: Map) => map.key === color).map((map: Map) => map.class);
+	const _shape = shapeSetting.filter((map: Map) => map.key === shape).map((map: Map) => map.class);
 	const className = [
 		'btn',
-		color === 'default' ? '' : `btn-${color}`,
-		block ? 'btn-block' : '',
+		block ? 'btn-block' : '	',
 		outline ? 'btn-outline' : '',
 		loading ? 'loading' : '',
-		shape === 'default' ? '' : `btn-${shape}`,
+		..._color,
+		..._shape,
 		..._size,
 		...classes
 	].join(' ');

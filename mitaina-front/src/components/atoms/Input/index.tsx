@@ -22,12 +22,22 @@ type Props = {
 	onChange?: (event: any) => void;
 };
 
-const SizeSetting: Map[] = [
+const sizeSetting: Map[] = [
 	{ key: 'tiny', class: ['input-xs'] },
 	{ key: 'small', class: ['input-sm'] },
 	{ key: 'normal', class: [''] },
 	{ key: 'medium', class: ['input-md'] },
 	{ key: 'large', class: ['input-lg'] }
+];
+const colorSetting: Map[] = [
+	{ key: 'default', class: [''] },
+	{ key: 'primary', class: ['input-primary'] },
+	{ key: 'secondary', class: ['input-secondary'] },
+	{ key: 'accent', class: ['input-accent'] },
+	{ key: 'info', class: ['input-info'] },
+	{ key: 'success', class: ['input-success'] },
+	{ key: 'warning', class: ['input-warning'] },
+	{ key: 'error', class: ['input-error'] }
 ];
 
 export const Input: FC<Props> = ({
@@ -46,14 +56,15 @@ export const Input: FC<Props> = ({
 	onClick,
 	onChange
 }: Props) => {
-	const _size = SizeSetting.filter((map: Map) => map.key === size).map((map: Map) => map.class);
+	const _size = sizeSetting.filter((map: Map) => map.key === size).map((map: Map) => map.class);
+	const _color = colorSetting.filter((map: Map) => map.key === color).map((map: Map) => map.class);
 	const className = [
 		'input',
 		'max-w-xs',
 		fullWidth ? 'w-full' : '',
 		border ? 'input-bordered' : '',
 		ghost ? 'input-ghost' : '',
-		color === 'default' ? '' : `input-${color}`,
+		..._color,
 		..._size,
 		...classes
 	].join(' ');
