@@ -6,7 +6,6 @@ import { useNavigate } from 'react-router-dom';
 import { postJSON } from '../../lib/EndpointHelper';
 import { ArrowCircleRightIcon, ArrowLeftIcon } from '@heroicons/react/outline';
 import ModalRoomCreate from 'components/organisms/ModalRoomCreate';
-import Modal from 'components/atoms/Modal';
 
 type Props = {};
 
