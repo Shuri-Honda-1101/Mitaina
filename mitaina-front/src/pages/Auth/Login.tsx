@@ -6,8 +6,8 @@ import { postJSON } from 'lib/EndpointHelper';
 //components
 import Button from 'components/atoms/Button';
 import Input from 'components/atoms/Input';
-import Hero from 'components/Hero';
-import Card from 'components/Card';
+import Hero from 'components/atoms/Hero';
+import Card from 'components/atoms/Card';
 import Alert from 'components/atoms/Alert';
 
 type Props = {};

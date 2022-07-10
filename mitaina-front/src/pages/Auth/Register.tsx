@@ -4,8 +4,8 @@ import { ArrowLeftIcon } from '@heroicons/react/outline';
 import { useNavigate } from 'react-router-dom';
 
 //components
-import Hero from 'components/Hero';
-import Card from 'components/Card';
+import Hero from 'components/atoms/Hero';
+import Card from 'components/atoms/Card';
 import Button from 'components/atoms/Button';
 import Input from 'components/atoms/Input';
 import Alert from 'components/atoms/Alert';
