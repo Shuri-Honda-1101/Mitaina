@@ -7,11 +7,6 @@ type CreateUser = { loginId: string; userName: string; password: string };
 export class UserRepository {
 	static async createUser(data: CreateUser): Promise<User> {
 		const { loginId, userName, password } = data;
-		console.log({
-			loginId,
-			name: userName,
-			passwordHash: await bcrypt.hash(password, 10)
-		});
 		return await prisma.user.create({
 			data: {
 				loginId,

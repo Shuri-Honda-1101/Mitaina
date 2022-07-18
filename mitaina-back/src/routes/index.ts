@@ -1,6 +1,5 @@
-import express, { Request, Response } from 'express';
+import express from 'express';
 import path from 'path';
-import prisma from '../lib/prisma';
 import apiRouter from './api/api';
 import cookieParser from 'cookie-parser';
 

@@ -5,9 +5,7 @@ import Button from 'components/atoms/Button';
 type Props = {
 	children: React.ReactNode;
 	idFor: string;
-	modalActionTitle: string;
 	modalClasses?: string[];
-	modalActionClasses?: string[];
 	onClickModal?: (event: any) => void;
 	btnChildren: React.ReactNode;
 	btnColor?:
@@ -28,17 +26,13 @@ type Props = {
 	btnDisabled?: boolean;
 	btnClasses?: string[];
 	btnType?: 'button' | 'submit' | 'reset';
-	onClickBtn?: (event: any) => void;
 };
 
 const OpenModal: FC<Props> = ({
 	idFor,
 	btnChildren,
 	children,
-	modalActionTitle,
 	modalClasses = [],
-	modalActionClasses = [],
-	onClickModal,
 	btnColor,
 	btnOutline,
 	btnSize,
@@ -66,14 +60,7 @@ const OpenModal: FC<Props> = ({
 					{btnChildren}
 				</label>
 			</Button>
-			<Modal
-				idFor={idFor}
-				children={children}
-				modalActionTitle={modalActionTitle}
-				classes={modalClasses}
-				modalActionClasses={modalActionClasses}
-				onClick={onClickModal}
-			></Modal>
+			<Modal idFor={idFor} children={children} classes={modalClasses}></Modal>
 		</>
 	);
 };

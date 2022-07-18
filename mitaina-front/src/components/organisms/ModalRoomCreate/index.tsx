@@ -1,10 +1,44 @@
 import { ArrowCircleRightIcon } from '@heroicons/react/outline';
+import Alert from 'components/atoms/Alert';
+import Button from 'components/atoms/Button';
+import Input from 'components/atoms/Input';
 import OpenModal from 'components/molecules/OpenModal';
-import React, { FC } from 'react';
+import { postJSON } from 'lib/EndpointHelper';
+import React, { FC, useState } from 'react';
+import { useRecoilValue } from 'recoil';
+import { userAtom } from 'store/user';
 
 type Props = {};
 
 const ModalRoomCreate: FC<Props> = () => {
+	const currentUser = useRecoilValue(userAtom);
+	const [roomName, setRoomName] = useState<string>('');
+	const [password, setPassword] = useState<string>('');
+	const [message, setMessage] = useState<{
+		type: 'success' | 'error';
+		message: string;
+	} | null>(null);
+
+	const onClickCreateRoom = async () => {
+		if (roomName === '') {
+			setMessage({ type: 'error', message: 'ルーム名は必須項目です' });
+			return;
+		}
+		const createRes = await postJSON('room', { roomName, password, user: currentUser });
+		console.log(createRes);
+		if (createRes.statusText === 'GameUser not created') {
+			setMessage({ type: 'error', message: 'ユーザーの作成に失敗しました' });
+		}
+		if (createRes.statusText === 'Room not created') {
+			setMessage({ type: 'error', message: 'ルームの作成に失敗しました' });
+		}
+		if (createRes.ok) {
+			setMessage({
+				type: 'success',
+				message: 'ルームを作成しました'
+			});
+		}
+	};
 	return (
 		<OpenModal
 			btnColor="primary"
@@ -18,9 +52,38 @@ const ModalRoomCreate: FC<Props> = () => {
 				</>
 			}
 			idFor="modal-room-create"
-			modalActionTitle="ルームを作成する"
 		>
-			<p>test</p>
+			<div>
+				{message && <Alert message={message.message} type={message.type} />}
+				<div>
+					<label htmlFor="register-loginId" className="label">
+						<span className="label-text">ルーム名</span>
+					</label>
+					<Input
+						onClick={() => setMessage(null)}
+						type="text"
+						pattern="^[0-9A-Za-z]+$"
+						id="register-loginId"
+						border={true}
+						value={roomName}
+						onChange={(e) => setRoomName(e.target.value)}
+					/>
+				</div>
+				<div>
+					<label htmlFor="register-password" className="label">
+						<span className="label-text">パスワード</span>
+					</label>
+					<Input
+						onClick={() => setMessage(null)}
+						type="password"
+						id="register-password"
+						border={true}
+						value={password}
+						onChange={(e) => setPassword(e.target.value)}
+					/>
+				</div>
+				<Button onClick={onClickCreateRoom}>ルームを作成する</Button>
+			</div>
 		</OpenModal>
 	);
 };

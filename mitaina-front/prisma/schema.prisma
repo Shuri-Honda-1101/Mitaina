@@ -32,6 +32,8 @@ model GameUser{
  
 model Room {
   id      String      @id @default(cuid())
+  name String
+  passwordHash String
   users GameUser[]
   turns Turn[] 
 }

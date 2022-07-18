@@ -1,7 +1,4 @@
 import { Request, Response, Router } from 'express';
-// import prisma from '../../../lib/prisma';
-// import { UserRepository } from '../../../repository/userRepository';
-// import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import { UserRepository } from '../../../repository/userRepository';
 

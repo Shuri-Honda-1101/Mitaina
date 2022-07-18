@@ -25,13 +25,15 @@ model GameUser{
   userId String
   user User @relation(fields: [userId], references: [id])
   roomId String
-  rooms Room @relation(fields: [roomId], references: [id])
+  room Room @relation(fields: [roomId], references: [id])
   score Int
   isHost Boolean
 }
  
 model Room {
   id      String      @id @default(cuid())
+  name String
+  passwordHash String
   users GameUser[]
   turns Turn[] 
 }
