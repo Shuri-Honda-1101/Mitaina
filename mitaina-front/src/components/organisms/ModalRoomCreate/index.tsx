@@ -53,36 +53,40 @@ const ModalRoomCreate: FC<Props> = () => {
 			}
 			idFor="modal-room-create"
 		>
-			<div>
-				{message && <Alert message={message.message} type={message.type} />}
-				<div>
-					<label htmlFor="register-loginId" className="label">
-						<span className="label-text">ルーム名</span>
-					</label>
-					<Input
-						onClick={() => setMessage(null)}
-						type="text"
-						pattern="^[0-9A-Za-z]+$"
-						id="register-loginId"
-						border={true}
-						value={roomName}
-						onChange={(e) => setRoomName(e.target.value)}
-					/>
+			<div className="flex justify-center">
+				<div className="flex justify-center flex-col max-w-xs w-full">
+					{message && <Alert message={message.message} type={message.type} />}
+					<div className="w-full">
+						<label htmlFor="register-loginId" className="label">
+							<span className="label-text">ルーム名</span>
+						</label>
+						<Input
+							onClick={() => setMessage(null)}
+							type="text"
+							pattern="^[0-9A-Za-z]+$"
+							id="register-loginId"
+							border={true}
+							value={roomName}
+							onChange={(e) => setRoomName(e.target.value)}
+						/>
+					</div>
+					<div className="w-full">
+						<label htmlFor="register-password" className="label">
+							<span className="label-text">パスワード</span>
+						</label>
+						<Input
+							onClick={() => setMessage(null)}
+							type="password"
+							id="register-password"
+							border={true}
+							value={password}
+							onChange={(e) => setPassword(e.target.value)}
+						/>
+					</div>
+					<Button classes={['my-5', 'w-full']} color="primary" onClick={onClickCreateRoom}>
+						ルームを作成する
+					</Button>
 				</div>
-				<div>
-					<label htmlFor="register-password" className="label">
-						<span className="label-text">パスワード</span>
-					</label>
-					<Input
-						onClick={() => setMessage(null)}
-						type="password"
-						id="register-password"
-						border={true}
-						value={password}
-						onChange={(e) => setPassword(e.target.value)}
-					/>
-				</div>
-				<Button onClick={onClickCreateRoom}>ルームを作成する</Button>
 			</div>
 		</OpenModal>
 	);

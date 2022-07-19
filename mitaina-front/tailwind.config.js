@@ -16,7 +16,8 @@ module.exports = {
 			}
 		}
 	},
-	plugins: [require('daisyui')],
+	plugins: [require('daisyui'), 'tailwindcss'],
+	extends: ['plugin:tailwindcss/recommended'],
 	daisyui: {
 		themes: [
 			{
