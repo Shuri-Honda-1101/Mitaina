@@ -8,8 +8,7 @@ const router = Router();
 
 router.get('/', async (req: Request, res: Response) => {
 	const users = await prisma.room.findMany();
-	// return res.json(users);
-	return res.status(200).json({ message: 'Room and GameUser created successfully' });
+	return res.json(users);
 });
 
 router.post('/', async (req: Request, res: Response) => {

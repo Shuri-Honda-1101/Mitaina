@@ -25,7 +25,7 @@ router.get('/user', async (req: Request, res: Response) => {
 			return res.json(currentUser);
 		}
 	}
-	return res.status(401).send('Unauthorized');
+	return res.writeHead(401, 'Unauthorized').end();
 });
 
 export default router;
