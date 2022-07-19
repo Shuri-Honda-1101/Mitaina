@@ -14,7 +14,7 @@ router.post('/', async (req: Request, res: Response) => {
 	const data = await req.body;
 	const isExist = await UserRepository.getIsExistUserFromLoginId(data.loginId);
 	if (isExist) {
-		return res.status(409).send('User already exists');
+		return res.writeHead(409, 'User already exists').end();
 	}
 	const user = await UserRepository.createUser(data);
 	if (user) {

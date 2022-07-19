@@ -25,7 +25,6 @@ const ModalRoomCreate: FC<Props> = () => {
 			return;
 		}
 		const createRes = await postJSON('room', { roomName, password, user: currentUser });
-		console.log(createRes);
 		if (createRes.statusText === 'GameUser not created') {
 			setMessage({ type: 'error', message: 'ユーザーの作成に失敗しました' });
 		}
